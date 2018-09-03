@@ -40,6 +40,8 @@ if __name__ == '__main__':
 		img_bf_1 = BeautifulSoup(img_html, 'lxml')
 		img_url = img_bf_1.find_all('div', class_='wr-single-content-list')
 		img_bf_2 = BeautifulSoup(str(img_url), 'lxml')
+		if img_bf_2.div is None:##to avoid the empty div;pkeing 2018.9.4
+			continue
 		img_url = 'http://www.shuaia.net' + img_bf_2.div.img.get('src')
 		if 'images' not in os.listdir():
 			os.makedirs('images')
